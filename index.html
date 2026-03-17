@@ -1,0 +1,1686 @@
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel Creator — Criador de Carrosséis AI</title>
+  <meta name="description" content="Crie carrosséis virais para Instagram e Facebook com texto e imagens gerados por Inteligência Artificial.">
+
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design Tokens ─────────────────────────────────────────────── */
+    :root {
+      --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+
+      --space-1: 0.25rem; --space-2: 0.5rem;  --space-3: 0.75rem;
+      --space-4: 1rem;    --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem;    --space-10: 2.5rem; --space-12: 3rem;
+      --space-16: 4rem;   --space-20: 5rem;
+
+      --radius-sm: 0.375rem; --radius-md: 0.625rem;
+      --radius-lg: 1rem;     --radius-xl: 1.5rem;
+      --radius-full: 9999px;
+
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-display: 'Cabinet Grotesk', 'Helvetica Neue', sans-serif;
+      --font-body: 'Satoshi', 'Inter', sans-serif;
+    }
+
+    /* Dark mode (default) */
+    [data-theme="dark"] {
+      --bg:          #0d0d12;
+      --surface:     #13131a;
+      --surface-2:   #1a1a24;
+      --surface-3:   #222230;
+      --border:      #2a2a3a;
+      --border-2:    #333345;
+      --text:        #e8e8f0;
+      --text-muted:  #7a7a96;
+      --text-faint:  #44445a;
+
+      --primary:     #7c6bff;
+      --primary-hover: #6b5aee;
+      --primary-glow: rgba(124, 107, 255, 0.25);
+
+      --accent:      #ff6b9d;
+      --accent-hover: #ee5a8c;
+      --accent-glow: rgba(255, 107, 157, 0.2);
+
+      --success:     #4ade80;
+      --warning:     #fbbf24;
+      --error:       #f87171;
+
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.6);
+    }
+
+    [data-theme="light"] {
+      --bg:          #f4f4f8;
+      --surface:     #ffffff;
+      --surface-2:   #f0f0f8;
+      --surface-3:   #e8e8f4;
+      --border:      #dddde8;
+      --border-2:    #c8c8d8;
+      --text:        #12121e;
+      --text-muted:  #5a5a78;
+      --text-faint:  #9898b0;
+
+      --primary:     #6b5aee;
+      --primary-hover: #5a49dd;
+      --primary-glow: rgba(107, 90, 238, 0.2);
+
+      --accent:      #e8337a;
+      --accent-hover: #d42268;
+      --accent-glow: rgba(232, 51, 122, 0.15);
+
+      --success:     #16a34a;
+      --warning:     #d97706;
+      --error:       #dc2626;
+
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+    }
+
+    /* ── Base ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100dvh;
+      line-height: 1.6;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+    input, textarea, select { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+    /* ── Layout ──────────────────────────────────────────────────── */
+    .app-layout {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      grid-template-rows: auto 1fr;
+      min-height: 100dvh;
+    }
+    @media (max-width: 900px) {
+      .app-layout { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* ── Header ──────────────────────────────────────────────────── */
+    .header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--space-8);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-lg);
+      text-decoration: none;
+      color: var(--text);
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-badge {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .btn-theme {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-full);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+    .btn-theme:hover { color: var(--text); border-color: var(--primary); }
+
+    /* ── Sidebar ─────────────────────────────────────────────────── */
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      margin-bottom: var(--space-3);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .form-group label {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-select { appearance: none; cursor: pointer; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    /* ── Buttons ─────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      box-shadow: 0 4px 16px var(--primary-glow);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--primary-glow); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--surface-3); border-color: var(--border-2); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      padding: var(--space-2) var(--space-3);
+    }
+    .btn-ghost:hover { color: var(--text); background: var(--surface-2); border-radius: var(--radius-sm); }
+    .btn-sm { padding: var(--space-2) var(--space-4); font-size: var(--text-xs); }
+    .btn-full { width: 100%; }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+    .btn-danger {
+      background: var(--error);
+      color: #fff;
+    }
+
+    /* ── Tabs ────────────────────────────────────────────────────── */
+    .tabs {
+      display: flex;
+      gap: var(--space-1);
+      background: var(--surface-2);
+      border-radius: var(--radius-md);
+      padding: var(--space-1);
+    }
+    .tab {
+      flex: 1;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-align: center;
+    }
+    .tab.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 8px var(--primary-glow);
+    }
+    .tab:not(.active):hover { color: var(--text); background: var(--surface-3); }
+
+    /* ── Main Area ───────────────────────────────────────────────── */
+    .main-area {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--space-6);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .toolbar-left { display: flex; align-items: center; gap: var(--space-3); }
+    .toolbar-right { display: flex; align-items: center; gap: var(--space-3); }
+
+    .slide-counter {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ── Slides Area ─────────────────────────────────────────────── */
+    .slides-workspace {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    /* ── Slide Card ──────────────────────────────────────────────── */
+    .slide-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+    .slide-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-2); }
+    .slide-card.active { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-glow), var(--shadow-md); }
+
+    .slide-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--space-5);
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .slide-num-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .slide-num-dot {
+      width: 24px; height: 24px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .slide-actions { display: flex; gap: var(--space-2); }
+
+    .slide-card-body {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-5);
+      padding: var(--space-5);
+    }
+    @media (max-width: 600px) {
+      .slide-card-body { grid-template-columns: 1fr; }
+    }
+
+    /* ── Slide Preview ───────────────────────────────────────────── */
+    .slide-preview-wrap {
+      position: relative;
+      width: 160px;
+      flex-shrink: 0;
+    }
+    .slide-preview {
+      width: 160px;
+      height: 160px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-3);
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+    .slide-preview:hover { transform: scale(1.02); }
+    .slide-preview-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      transition: opacity var(--transition);
+      display: flex; align-items: center; justify-content: center;
+      gap: var(--space-2);
+      flex-direction: column;
+    }
+    .slide-preview:hover .slide-preview-overlay { opacity: 1; }
+    .slide-preview-bg {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .slide-preview-content {
+      position: relative;
+      z-index: 1;
+    }
+    .slide-preview-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 11px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .slide-preview-body {
+      font-size: 9px;
+      line-height: 1.4;
+      opacity: 0.85;
+    }
+    .slide-preview-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .slide-preview-bar-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .preview-btn-small {
+      font-size: 10px;
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: background var(--transition);
+    }
+    .preview-btn-small:hover { background: rgba(255,255,255,0.35); }
+
+    /* ── Slide Fields ────────────────────────────────────────────── */
+    .slide-fields {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .field-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .field-input {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-sm);
+      color: var(--text);
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+    .field-input:focus { outline: none; border-color: var(--primary); }
+    .field-textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--space-2); }
+
+    .color-field {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .color-swatch {
+      width: 32px; height: 32px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .color-swatch input[type="color"] {
+      opacity: 0;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .layout-selector {
+      display: flex;
+      gap: var(--space-2);
+    }
+    .layout-opt {
+      flex: 1;
+      padding: var(--space-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--text-muted);
+    }
+    .layout-opt.selected {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-glow);
+    }
+
+    /* ── Add Slide Button ────────────────────────────────────────── */
+    .add-slide-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      padding: var(--space-5);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-xl);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+      font-size: var(--text-sm);
+      font-weight: 500;
+    }
+    .add-slide-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-glow);
+    }
+
+    /* ── Loading Overlay ─────────────────────────────────────────── */
+    .loading-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .loading-overlay.active { opacity: 1; pointer-events: all; }
+    .loading-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10);
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+    }
+    .loading-spinner {
+      width: 48px; height: 48px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto var(--space-5);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+    }
+    .loading-sub {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+
+    /* ── Toast ───────────────────────────────────────────────────── */
+    .toast-container {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      z-index: 2000;
+    }
+    .toast {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      box-shadow: var(--shadow-lg);
+      font-size: var(--text-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 280px;
+      animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+    .toast.success { border-left: 3px solid var(--success); }
+    .toast.error   { border-left: 3px solid var(--error); }
+    .toast.info    { border-left: 3px solid var(--primary); }
+
+    /* ── Hashtag Display ─────────────────────────────────────────── */
+    .hashtag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+    .hashtag-chip {
+      background: var(--primary-glow);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      border-radius: var(--radius-full);
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--text-xs);
+      font-weight: 600;
+    }
+
+    /* ── Caption Box ─────────────────────────────────────────────── */
+    .caption-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--text);
+      line-height: 1.6;
+      white-space: pre-wrap;
+      position: relative;
+    }
+    .caption-copy {
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+    }
+
+    /* ── Color Presets ────────────────────────────────────────────── */
+    .color-presets {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    .color-preset {
+      width: 32px; height: 32px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+    .color-preset:hover, .color-preset.active { border-color: var(--text); transform: scale(1.1); }
+
+    /* ── Progress bar for image gen ─────────────────────────────── */
+    .img-gen-progress {
+      height: 3px;
+      background: var(--border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-top: var(--space-2);
+    }
+    .img-gen-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      width: 0%;
+      transition: width 0.3s ease;
+      animation: pulse-bar 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-bar {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    /* ── Divider ─────────────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: var(--space-2) 0;
+    }
+
+    /* ── Empty State ─────────────────────────────────────────────── */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      padding: var(--space-16) var(--space-8);
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .empty-icon {
+      width: 80px; height: 80px;
+      background: var(--surface-2);
+      border-radius: var(--radius-xl);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    .footer {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: var(--space-4);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-xs);
+      color: var(--text-faint);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── Scrollbar ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--border-2); }
+
+    /* ── Gradient text ────────────────────────────────────────────── */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Chip ────────────────────────────────────────────────────── */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1) var(--space-3);
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .chip.purple { background: var(--primary-glow); border-color: var(--primary); color: var(--primary); }
+    .chip.pink   { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<!-- ── Loading Overlay ─────────────────────────────────────────────────── -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-card">
+    <div class="loading-spinner"></div>
+    <div class="loading-title" id="loadingTitle">Gerando conteúdo...</div>
+    <div class="loading-sub" id="loadingSub">A IA está criando seu carrossel</div>
+  </div>
+</div>
+
+<!-- ── Toast Container ────────────────────────────────────────────────── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ── App ────────────────────────────────────────────────────────────── -->
+<div class="app-layout">
+
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="#">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="7" height="18" rx="1"/>
+          <rect x="10" y="3" width="12" height="8" rx="1"/>
+          <rect x="10" y="13" width="12" height="8" rx="1"/>
+        </svg>
+      </div>
+      <span>Carousel<span class="logo-badge">Creator</span></span>
+    </a>
+    <div class="header-actions">
+      <span class="chip purple">✦ AI</span>
+      <button class="btn-theme" data-theme-toggle aria-label="Alternar tema">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" onclick="setTab('generate', this)">🤖 Gerar</div>
+      <div class="tab" onclick="setTab('design', this)">🎨 Design</div>
+      <div class="tab" onclick="setTab('export', this)">📦 Exportar</div>
+    </div>
+
+    <!-- ── Tab: Gerar ─────────────────────────────────────────────── -->
+    <div id="tab-generate">
+      <p class="section-label">Gerador de Texto AI</p>
+
+      <div class="form-group">
+        <label>Tema / Assunto *</label>
+        <textarea class="form-textarea" id="topic" placeholder="Ex: 5 segredos para crescer no Instagram em 2025..." rows="3"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Plataforma</label>
+          <select class="form-select" id="platform">
+            <option>Instagram</option>
+            <option>Facebook</option>
+            <option>LinkedIn</option>
+            <option>TikTok</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Idioma</label>
+          <select class="form-select" id="language">
+            <option value="pt-BR">Português</option>
+            <option value="en-US">English</option>
+            <option value="es-ES">Español</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Tom</label>
+          <select class="form-select" id="tone">
+            <option value="inspiracional">Inspiracional</option>
+            <option value="educativo">Educativo</option>
+            <option value="humoristico">Humorístico</option>
+            <option value="profissional">Profissional</option>
+            <option value="provocativo">Provocativo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nº de slides</label>
+          <select class="form-select" id="slidesCount">
+            <option value="3">3 slides</option>
+            <option value="5" selected>5 slides</option>
+            <option value="7">7 slides</option>
+            <option value="10">10 slides</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Nicho (opcional)</label>
+        <input class="form-input" id="niche" type="text" placeholder="Ex: música, fitness, tecnologia...">
+      </div>
+
+      <button class="btn btn-primary btn-full" onclick="generateText()" id="btnGenText">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Gerar com AI
+      </button>
+
+      <!-- Caption + Hashtags Result -->
+      <div id="captionResult" style="display:none;">
+        <div class="divider"></div>
+        <p class="section-label">Legenda</p>
+        <div class="caption-box" id="captionText">
+          <button class="btn btn-ghost btn-sm caption-copy" onclick="copyCaption()" title="Copiar legenda">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+        <p class="section-label" style="margin-top:var(--space-4)">Hashtags</p>
+        <div class="hashtag-list" id="hashtagList"></div>
+      </div>
+    </div>
+
+    <!-- ── Tab: Design ────────────────────────────────────────────── -->
+    <div id="tab-design" style="display:none;">
+      <p class="section-label">Paleta de Cores</p>
+
+      <div class="color-presets" id="colorPresets">
+        <!-- Injected by JS -->
+      </div>
+
+      <div class="divider"></div>
+      <p class="section-label">Aplicar a todos os slides</p>
+
+      <div class="form-group">
+        <label>Fundo</label>
+        <div class="color-field">
+          <div class="color-swatch" id="globalBgSwatch" style="background:#1a1a2e;">
+            <input type="color" id="globalBg" value="#1a1a2e" onchange="applyGlobalColor('bg_color', this.value)">
+          </div>
+          <input class="form-input" type="text" id="globalBgText" value="#1a1a2e" oninput="syncColor('globalBg', 'globalBgSwatch', this.value)" placeholder="#1a1a2e">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Texto</label>
+        <div class="color-field">
+          <div class="color-swatch" id="globalTextSwatch" style="background:#ffffff;">
+            <input type="color" id="globalText" value="#ffffff" onchange="applyGlobalColor('text_color', this.value)">
+          </div>
+          <input class="form-input" type="text" id="globalTextText" value="#ffffff" oninput="syncColor('globalText', 'globalTextSwatch', this.value)" placeholder="#ffffff">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Destaque</label>
+        <div class="color-field">
+          <div class="color-swatch" id="globalAccentSwatch" style="background:#e94560;">
+            <input type="color" id="globalAccent" value="#e94560" onchange="applyGlobalColor('accent_color', this.value)">
+          </div>
+          <input class="form-input" type="text" id="globalAccentText" value="#e94560" oninput="syncColor('globalAccent', 'globalAccentSwatch', this.value)" placeholder="#e94560">
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="section-label">Layout padrão</p>
+      <div class="layout-selector" id="globalLayout">
+        <div class="layout-opt selected" data-val="center" onclick="setGlobalLayout('center', this)">⊙ Centro</div>
+        <div class="layout-opt" data-val="left" onclick="setGlobalLayout('left', this)">⬅ Esquerda</div>
+      </div>
+
+      <div class="divider"></div>
+      <p class="section-label">Gerar imagens AI para todos</p>
+      <button class="btn btn-secondary btn-full" onclick="generateAllImages()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>
+        Gerar imagens para todos
+      </button>
+
+      <div class="form-group" style="margin-top: var(--space-3)">
+        <label>Estilo visual</label>
+        <select class="form-select" id="imgStyle">
+          <option value="moderno">Moderno</option>
+          <option value="artistico">Artístico</option>
+          <option value="minimalista">Minimalista</option>
+          <option value="vibrante">Vibrante</option>
+          <option value="escuro">Escuro</option>
+          <option value="gradiente">Gradiente Neon</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ── Tab: Exportar ──────────────────────────────────────────── -->
+    <div id="tab-export" style="display:none;">
+      <p class="section-label">Configurações de exportação</p>
+
+      <div class="form-group">
+        <label>Usuário / Marca</label>
+        <input class="form-input" id="username" type="text" placeholder="@seuperfil">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Largura (px)</label>
+          <input class="form-input" id="exportWidth" type="number" value="1080" min="400" max="2000">
+        </div>
+        <div class="form-group">
+          <label>Altura (px)</label>
+          <input class="form-input" id="exportHeight" type="number" value="1080" min="400" max="2000">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Formato</label>
+        <select class="form-select">
+          <option>Feed (1:1) — 1080×1080</option>
+          <option>Story (9:16) — 1080×1920</option>
+          <option>Portrait (4:5) — 1080×1350</option>
+        </select>
+      </div>
+
+      <div class="divider"></div>
+
+      <button class="btn btn-primary btn-full" onclick="exportZip()" id="btnExport">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Exportar ZIP de JPGs
+      </button>
+
+      <p style="font-size:var(--text-xs); color:var(--text-muted); text-align:center; margin-top:var(--space-3)">
+        Cada slide será exportado como um JPG individual compactado em ZIP
+      </p>
+
+      <div class="divider"></div>
+      <p class="section-label">Sobre</p>
+      <p style="font-size:var(--text-xs);color:var(--text-muted);line-height:1.7">
+        Criador de carrosséis com geração de texto e imagens por IA.<br>
+        Exporta slides prontos para postar no Instagram e Facebook.
+      </p>
+    </div>
+
+  </aside>
+
+  <!-- Main -->
+  <main class="main-area">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <span class="slide-counter" id="slideCounter">0 slides</span>
+        <span class="chip">Instagram / Facebook</span>
+      </div>
+      <div class="toolbar-right">
+        <button class="btn btn-secondary btn-sm" onclick="addBlankSlide()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Novo slide
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="clearAll()" id="btnClear" style="display:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3,6 5,6 21,6"/><path d="M19,6l-1,14H6L5,6"/><path d="M10,11v6"/><path d="M14,11v6"/></svg>
+          Limpar
+        </button>
+      </div>
+    </div>
+
+    <div class="slides-workspace" id="slidesWorkspace">
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">✦</div>
+        <div>
+          <p style="font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-2)">Comece criando seu carrossel</p>
+          <p>Use o painel ao lado para gerar slides com IA ou clique em "Novo slide" para criar manualmente.</p>
+        </div>
+        <button class="btn btn-primary" onclick="document.getElementById('topic').focus(); setTab('generate', document.querySelector('.tab'))">
+          Gerar com AI →
+        </button>
+      </div>
+
+      <!-- Slides list injected here -->
+      <div id="slidesList"></div>
+
+      <!-- Add button -->
+      <div class="add-slide-btn" id="addSlideBtn" onclick="addBlankSlide()" style="display:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Adicionar slide
+      </div>
+    </div>
+
+    <footer class="footer">
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   Carousel Creator — App Logic
+   ══════════════════════════════════════════════════════════════════ */
+
+const API = '';  // Same origin
+
+// ── State ──────────────────────────────────────────────────────────
+let slides = [];
+let nextId = 1;
+
+const BLANK_SLIDE = () => ({
+  id: nextId++,
+  title: 'Novo Slide',
+  body: 'Conteúdo do slide',
+  cta: '',
+  bg_color: '#1a1a2e',
+  text_color: '#ffffff',
+  accent_color: '#e94560',
+  image_b64: null,
+  image_prompt: '',
+  font_style: 'bold',
+  layout: 'center',
+});
+
+// ── Color Presets ───────────────────────────────────────────────────
+const PALETTES = [
+  { name: 'Noite Estrelada', bg: '#0d0d1a', text: '#e8e8ff', accent: '#7c6bff' },
+  { name: 'Rosa Vibrante', bg: '#1a0a14', text: '#ffe8f0', accent: '#ff6b9d' },
+  { name: 'Verde Neon', bg: '#001a0d', text: '#e0ffe8', accent: '#00e676' },
+  { name: 'Ouro Luxo', bg: '#0f0a00', text: '#fff8e0', accent: '#ffd700' },
+  { name: 'Azul Ocean', bg: '#001020', text: '#e0f4ff', accent: '#00b4d8' },
+  { name: 'Laranja Fire', bg: '#1a0800', text: '#fff0e8', accent: '#ff6b35' },
+  { name: 'Roxo Místico', bg: '#100a1a', text: '#f0e8ff', accent: '#bf5af2' },
+  { name: 'Branco Minimal', bg: '#f8f8fc', text: '#12121e', accent: '#6b5aee' },
+];
+
+function initColorPresets() {
+  const container = document.getElementById('colorPresets');
+  container.innerHTML = PALETTES.map((p, i) => `
+    <div class="color-preset" 
+         style="background: linear-gradient(135deg, ${p.bg} 50%, ${p.accent} 100%);" 
+         title="${p.name}"
+         onclick="applyPalette(${i})"></div>
+  `).join('');
+}
+
+function applyPalette(i) {
+  const p = PALETTES[i];
+  slides.forEach(s => {
+    s.bg_color = p.bg;
+    s.text_color = p.text;
+    s.accent_color = p.accent;
+  });
+  document.getElementById('globalBg').value = p.bg;
+  document.getElementById('globalBgSwatch').style.background = p.bg;
+  document.getElementById('globalBgText').value = p.bg;
+  document.getElementById('globalText').value = p.text;
+  document.getElementById('globalTextSwatch').style.background = p.text;
+  document.getElementById('globalTextText').value = p.text;
+  document.getElementById('globalAccent').value = p.accent;
+  document.getElementById('globalAccentSwatch').style.background = p.accent;
+  document.getElementById('globalAccentText').value = p.accent;
+  renderSlides();
+  toast(`Paleta "${p.name}" aplicada`, 'success');
+}
+
+// ── Theme Toggle ────────────────────────────────────────────────────
+(function() {
+  const t = document.querySelector('[data-theme-toggle]');
+  const r = document.documentElement;
+  let d = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  r.setAttribute('data-theme', d);
+  if (t) t.addEventListener('click', () => {
+    d = d === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', d);
+    t.innerHTML = d === 'dark'
+      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  });
+})();
+
+// ── Tab Navigation ──────────────────────────────────────────────────
+function setTab(name, el) {
+  ['generate', 'design', 'export'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === name ? '' : 'none';
+  });
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  if (el) el.classList.add('active');
+}
+
+// ── Toast ────────────────────────────────────────────────────────────
+function toast(msg, type = 'info', duration = 3000) {
+  const icons = { success: '✓', error: '✕', info: '✦' };
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<span style="font-size:1.1em">${icons[type]}</span> <span>${msg}</span>`;
+  c.appendChild(t);
+  setTimeout(() => t.remove(), duration);
+}
+
+// ── Loading ──────────────────────────────────────────────────────────
+function showLoading(title, sub) {
+  document.getElementById('loadingTitle').textContent = title;
+  document.getElementById('loadingSub').textContent = sub;
+  document.getElementById('loadingOverlay').classList.add('active');
+}
+function hideLoading() {
+  document.getElementById('loadingOverlay').classList.remove('active');
+}
+
+// ── Generate Text ────────────────────────────────────────────────────
+async function generateText() {
+  const topic = document.getElementById('topic').value.trim();
+  if (!topic) { toast('Insira um tema para gerar!', 'error'); return; }
+
+  showLoading('Gerando conteúdo...', 'A IA está criando seu carrossel');
+  document.getElementById('btnGenText').disabled = true;
+
+  try {
+    const res = await fetch(API + '/api/generate-text', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        topic,
+        platform: document.getElementById('platform').value,
+        language: document.getElementById('language').value,
+        tone: document.getElementById('tone').value,
+        slides_count: parseInt(document.getElementById('slidesCount').value),
+        niche: document.getElementById('niche').value,
+      }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || 'Erro na geração');
+    }
+
+    const data = await res.json();
+    
+    // Build slides from AI response
+    slides = data.slides.map(s => ({
+      id: nextId++,
+      title: s.title || 'Slide',
+      body: s.body || '',
+      cta: s.cta || '',
+      bg_color: '#1a1a2e',
+      text_color: '#ffffff',
+      accent_color: '#e94560',
+      image_b64: null,
+      image_prompt: s.suggested_image_prompt || '',
+      font_style: 'bold',
+      layout: 'center',
+    }));
+
+    // Show caption + hashtags
+    document.getElementById('captionResult').style.display = '';
+    const captionEl = document.getElementById('captionText');
+    captionEl.innerHTML = `<button class="btn btn-ghost btn-sm caption-copy" onclick="copyCaption()" title="Copiar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </button>${data.caption || ''}`;
+    captionEl.dataset.caption = data.caption || '';
+
+    const hashEl = document.getElementById('hashtagList');
+    hashEl.innerHTML = (data.hashtags || []).map(h => 
+      `<span class="hashtag-chip">#${h.replace('#','')}</span>`
+    ).join('');
+
+    renderSlides();
+    toast(`${slides.length} slides criados!`, 'success');
+
+  } catch (e) {
+    toast('Erro: ' + e.message, 'error', 5000);
+    console.error(e);
+  } finally {
+    hideLoading();
+    document.getElementById('btnGenText').disabled = false;
+  }
+}
+
+function copyCaption() {
+  const t = document.querySelector('#captionText').dataset.caption || document.querySelector('#captionText').innerText;
+  navigator.clipboard.writeText(t).then(() => toast('Legenda copiada!', 'success'));
+}
+
+// ── Generate Image for one slide ─────────────────────────────────────
+async function generateImageForSlide(slideId) {
+  const slide = slides.find(s => s.id === slideId);
+  if (!slide) return;
+
+  const prompt = slide.image_prompt || slide.title;
+  const style = document.getElementById('imgStyle').value;
+  
+  const card = document.querySelector(`[data-slide-id="${slideId}"]`);
+  if (card) {
+    const btn = card.querySelector('.btn-gen-img');
+    if (btn) { btn.disabled = true; btn.textContent = '⏳ Gerando...'; }
+    const progress = card.querySelector('.img-gen-progress');
+    if (progress) progress.style.display = '';
+  }
+
+  try {
+    const res = await fetch(API + '/api/generate-image', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt, aspect_ratio: '1:1', style }),
+    });
+
+    if (!res.ok) throw new Error('Falha na geração de imagem');
+    const data = await res.json();
+    slide.image_b64 = data.image;
+    renderSlides();
+    toast('Imagem gerada!', 'success');
+  } catch (e) {
+    toast('Erro ao gerar imagem: ' + e.message, 'error');
+  }
+}
+
+// ── Generate Images for all slides ──────────────────────────────────
+async function generateAllImages() {
+  if (!slides.length) { toast('Crie slides primeiro!', 'error'); return; }
+  showLoading('Gerando imagens...', `Criando ${slides.length} imagens — aguarde`);
+  
+  for (let i = 0; i < slides.length; i++) {
+    document.getElementById('loadingSub').textContent = `Slide ${i+1} de ${slides.length}...`;
+    try {
+      const slide = slides[i];
+      const res = await fetch(API + '/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: slide.image_prompt || slide.title,
+          aspect_ratio: '1:1',
+          style: document.getElementById('imgStyle').value,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        slides[i].image_b64 = data.image;
+      }
+    } catch {}
+  }
+
+  hideLoading();
+  renderSlides();
+  toast('Imagens geradas para todos os slides!', 'success');
+}
+
+// ── Add blank slide ──────────────────────────────────────────────────
+function addBlankSlide() {
+  const s = BLANK_SLIDE();
+  // Inherit global colors from last slide or defaults
+  if (slides.length > 0) {
+    s.bg_color = slides[slides.length - 1].bg_color;
+    s.text_color = slides[slides.length - 1].text_color;
+    s.accent_color = slides[slides.length - 1].accent_color;
+  }
+  slides.push(s);
+  renderSlides();
+}
+
+function deleteSlide(id) {
+  slides = slides.filter(s => s.id !== id);
+  renderSlides();
+}
+
+function clearAll() {
+  if (!confirm('Limpar todos os slides?')) return;
+  slides = [];
+  renderSlides();
+  document.getElementById('captionResult').style.display = 'none';
+}
+
+function moveSlide(id, dir) {
+  const idx = slides.findIndex(s => s.id === id);
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= slides.length) return;
+  [slides[idx], slides[newIdx]] = [slides[newIdx], slides[idx]];
+  renderSlides();
+}
+
+function updateSlideField(id, field, value) {
+  const s = slides.find(s => s.id === id);
+  if (s) {
+    s[field] = value;
+    // Instantly re-render preview
+    updateSlidePreview(id);
+  }
+}
+
+function updateSlideColor(id, field, value) {
+  const s = slides.find(s => s.id === id);
+  if (s) {
+    s[field] = value;
+    updateSlidePreview(id);
+  }
+}
+
+function updateSlidePreview(id) {
+  const slide = slides.find(s => s.id === id);
+  if (!slide) return;
+  const card = document.querySelector(`[data-slide-id="${id}"]`);
+  if (!card) return;
+  const preview = card.querySelector('.slide-preview');
+  if (!preview) return;
+
+  preview.style.background = slide.bg_color;
+  preview.style.color = slide.text_color;
+  
+  const bg = preview.querySelector('.slide-preview-bg');
+  if (bg) bg.style.backgroundImage = slide.image_b64 ? `url(${slide.image_b64})` : 'none';
+  
+  const titleEl = preview.querySelector('.slide-preview-title');
+  if (titleEl) titleEl.textContent = slide.title;
+  
+  const bodyEl = preview.querySelector('.slide-preview-body');
+  if (bodyEl) bodyEl.textContent = slide.body;
+  
+  const barTop = preview.querySelector('.slide-preview-bar');
+  const barBot = preview.querySelector('.slide-preview-bar-bottom');
+  if (barTop) barTop.style.background = slide.accent_color;
+  if (barBot) barBot.style.background = slide.accent_color;
+}
+
+// ── Render Slides ────────────────────────────────────────────────────
+function renderSlides() {
+  const list = document.getElementById('slidesList');
+  const empty = document.getElementById('emptyState');
+  const addBtn = document.getElementById('addSlideBtn');
+  const clearBtn = document.getElementById('btnClear');
+  const counter = document.getElementById('slideCounter');
+
+  counter.textContent = `${slides.length} slide${slides.length !== 1 ? 's' : ''}`;
+
+  if (!slides.length) {
+    empty.style.display = '';
+    list.innerHTML = '';
+    addBtn.style.display = 'none';
+    clearBtn.style.display = 'none';
+    return;
+  }
+
+  empty.style.display = 'none';
+  addBtn.style.display = '';
+  clearBtn.style.display = '';
+
+  list.innerHTML = slides.map((s, idx) => renderSlideCard(s, idx)).join('');
+  
+  // Bind color inputs
+  slides.forEach(s => bindSlideColors(s.id));
+}
+
+function renderSlideCard(slide, idx) {
+  const bgImg = slide.image_b64
+    ? `style="background-image:url(${slide.image_b64}); background-size:cover; background-position:center;"`
+    : '';
+  
+  const overlayStyle = slide.image_b64 ? 'background:rgba(0,0,0,0.55);' : '';
+
+  return `
+  <div class="slide-card" data-slide-id="${slide.id}">
+    <div class="slide-card-header">
+      <div class="slide-num-badge">
+        <div class="slide-num-dot">${idx + 1}</div>
+        SLIDE ${idx + 1} de ${slides.length}
+      </div>
+      <div class="slide-actions">
+        <button class="btn btn-ghost btn-sm" onclick="moveSlide(${slide.id}, -1)" ${idx === 0 ? 'disabled' : ''} title="Mover para cima">↑</button>
+        <button class="btn btn-ghost btn-sm" onclick="moveSlide(${slide.id}, 1)" ${idx === slides.length - 1 ? 'disabled' : ''} title="Mover para baixo">↓</button>
+        <button class="btn btn-ghost btn-sm" onclick="deleteSlide(${slide.id})" title="Deletar" style="color:var(--error)">✕</button>
+      </div>
+    </div>
+    <div class="slide-card-body">
+      <!-- Preview -->
+      <div class="slide-preview-wrap">
+        <div class="slide-preview" style="background:${slide.bg_color}; color:${slide.text_color};" title="Preview">
+          <div class="slide-preview-bar" style="background:${slide.accent_color};"></div>
+          <div class="slide-preview-bg" ${bgImg}></div>
+          <div style="${overlayStyle} position:absolute;inset:0;"></div>
+          <div class="slide-preview-content">
+            <div class="slide-preview-title">${escHtml(slide.title)}</div>
+            <div class="slide-preview-body">${escHtml(slide.body.substring(0, 80))}${slide.body.length > 80 ? '…' : ''}</div>
+            ${slide.cta ? `<div style="margin-top:8px;padding:3px 8px;border-radius:20px;font-size:9px;font-weight:700;background:${slide.accent_color};color:#fff;">${escHtml(slide.cta)}</div>` : ''}
+          </div>
+          <div class="slide-preview-overlay">
+            <button class="preview-btn-small btn-gen-img" onclick="generateImageForSlide(${slide.id})">🖼 Gerar imagem</button>
+            ${slide.image_b64 ? `<button class="preview-btn-small" onclick="removeImage(${slide.id})">✕ Remover</button>` : ''}
+          </div>
+          <div class="slide-preview-bar-bottom" style="background:${slide.accent_color};"></div>
+        </div>
+        <div class="img-gen-progress" style="display:none;">
+          <div class="img-gen-bar" style="width:80%;"></div>
+        </div>
+        ${slide.image_b64 ? '<div style="font-size:10px;color:var(--success);text-align:center;margin-top:4px;">✓ Imagem AI</div>' : ''}
+      </div>
+
+      <!-- Fields -->
+      <div class="slide-fields">
+        <div class="field-group">
+          <label class="field-label">Título</label>
+          <input class="field-input" type="text" value="${escAttr(slide.title)}"
+            oninput="updateSlideField(${slide.id}, 'title', this.value)" placeholder="Título do slide" maxlength="80">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Corpo</label>
+          <textarea class="field-input field-textarea" rows="2"
+            oninput="updateSlideField(${slide.id}, 'body', this.value)" 
+            placeholder="Texto principal do slide (max 120 chars)" maxlength="200">${escHtml(slide.body)}</textarea>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Call to Action (opcional)</label>
+          <input class="field-input" type="text" value="${escAttr(slide.cta)}"
+            oninput="updateSlideField(${slide.id}, 'cta', this.value)" placeholder="Ex: Salva esse post!">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Prompt de imagem AI</label>
+          <input class="field-input" type="text" value="${escAttr(slide.image_prompt)}"
+            oninput="updateSlideField(${slide.id}, 'image_prompt', this.value)" placeholder="Descreva a imagem em inglês...">
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label">Fundo</label>
+            <div class="color-field">
+              <div class="color-swatch" id="bgSwatch-${slide.id}" style="background:${slide.bg_color}; position:relative;">
+                <input type="color" id="bgColor-${slide.id}" value="${slide.bg_color}" style="opacity:0;position:absolute;width:32px;height:32px;cursor:pointer;">
+              </div>
+              <input class="field-input" type="text" id="bgColorText-${slide.id}" value="${slide.bg_color}" 
+                oninput="syncSlideColor(${slide.id}, 'bg', this.value)" placeholder="#000000">
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Texto</label>
+            <div class="color-field">
+              <div class="color-swatch" id="textSwatch-${slide.id}" style="background:${slide.text_color}; position:relative;">
+                <input type="color" id="textColor-${slide.id}" value="${slide.text_color}" style="opacity:0;position:absolute;width:32px;height:32px;cursor:pointer;">
+              </div>
+              <input class="field-input" type="text" id="textColorText-${slide.id}" value="${slide.text_color}"
+                oninput="syncSlideColor(${slide.id}, 'text', this.value)" placeholder="#ffffff">
+            </div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Destaque</label>
+            <div class="color-field">
+              <div class="color-swatch" id="accentSwatch-${slide.id}" style="background:${slide.accent_color}; position:relative;">
+                <input type="color" id="accentColor-${slide.id}" value="${slide.accent_color}" style="opacity:0;position:absolute;width:32px;height:32px;cursor:pointer;">
+              </div>
+              <input class="field-input" type="text" id="accentColorText-${slide.id}" value="${slide.accent_color}"
+                oninput="syncSlideColor(${slide.id}, 'accent', this.value)" placeholder="#e94560">
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Layout</label>
+          <div class="layout-selector">
+            <div class="layout-opt ${slide.layout === 'center' ? 'selected' : ''}" 
+                onclick="setSlideLayout(${slide.id}, 'center', this)">⊙ Centro</div>
+            <div class="layout-opt ${slide.layout === 'left' ? 'selected' : ''}" 
+                onclick="setSlideLayout(${slide.id}, 'left', this)">⬅ Esquerda</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function bindSlideColors(id) {
+  ['bg', 'text', 'accent'].forEach(type => {
+    const input = document.getElementById(`${type}Color-${id}`);
+    const swatch = document.getElementById(`${type}Swatch-${id}`);
+    const textInput = document.getElementById(`${type}ColorText-${id}`);
+    if (!input) return;
+
+    const fieldMap = { bg: 'bg_color', text: 'text_color', accent: 'accent_color' };
+    input.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (swatch) swatch.style.background = val;
+      if (textInput) textInput.value = val;
+      updateSlideColor(id, fieldMap[type], val);
+    });
+  });
+}
+
+function syncSlideColor(id, type, value) {
+  if (!/^#[0-9a-fA-F]{3,6}$/.test(value)) return;
+  const fieldMap = { bg: 'bg_color', text: 'text_color', accent: 'accent_color' };
+  const swatch = document.getElementById(`${type}Swatch-${id}`);
+  const colorInput = document.getElementById(`${type}Color-${id}`);
+  if (swatch) swatch.style.background = value;
+  if (colorInput) colorInput.value = value;
+  updateSlideColor(id, fieldMap[type], value);
+}
+
+function setSlideLayout(id, layout, el) {
+  const slide = slides.find(s => s.id === id);
+  if (slide) {
+    slide.layout = layout;
+    const container = el.closest('.layout-selector');
+    container.querySelectorAll('.layout-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    updateSlidePreview(id);
+  }
+}
+
+function removeImage(id) {
+  const s = slides.find(s => s.id === id);
+  if (s) { s.image_b64 = null; renderSlides(); }
+}
+
+// ── Global Design Controls ───────────────────────────────────────────
+function applyGlobalColor(field, value) {
+  slides.forEach(s => s[field] = value);
+  const swatchMap = { bg_color: 'globalBgSwatch', text_color: 'globalTextSwatch', accent_color: 'globalAccentSwatch' };
+  const textMap = { bg_color: 'globalBgText', text_color: 'globalTextText', accent_color: 'globalAccentText' };
+  const sw = document.getElementById(swatchMap[field]);
+  if (sw) sw.style.background = value;
+  const tx = document.getElementById(textMap[field]);
+  if (tx) tx.value = value;
+  renderSlides();
+}
+
+function syncColor(inputId, swatchId, value) {
+  if (!/^#[0-9a-fA-F]{3,6}$/.test(value)) return;
+  document.getElementById(inputId).value = value;
+  document.getElementById(swatchId).style.background = value;
+  const fieldMap = { globalBg: 'bg_color', globalText: 'text_color', globalAccent: 'accent_color' };
+  applyGlobalColor(fieldMap[inputId], value);
+}
+
+function setGlobalLayout(layout, el) {
+  slides.forEach(s => s.layout = layout);
+  document.querySelectorAll('#globalLayout .layout-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  renderSlides();
+}
+
+// ── Export ZIP ───────────────────────────────────────────────────────
+async function exportZip() {
+  if (!slides.length) { toast('Crie slides antes de exportar!', 'error'); return; }
+
+  showLoading('Exportando...', 'Renderizando seus slides como JPG');
+  document.getElementById('btnExport').disabled = true;
+
+  try {
+    const payload = {
+      slides: slides.map(s => ({
+        title: s.title,
+        body: s.body,
+        cta: s.cta || null,
+        bg_color: s.bg_color,
+        text_color: s.text_color,
+        accent_color: s.accent_color,
+        image_b64: s.image_b64 ? s.image_b64.split(',')[1] || s.image_b64 : null,
+        font_style: s.font_style,
+        layout: s.layout,
+      })),
+      username: document.getElementById('username').value.replace('@','') || null,
+      width: parseInt(document.getElementById('exportWidth').value) || 1080,
+      height: parseInt(document.getElementById('exportHeight').value) || 1080,
+    };
+
+    const res = await fetch(API + '/api/export-zip', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.detail || 'Falha na exportação');
+    }
+
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'carrossel.zip';
+    a.click();
+    URL.revokeObjectURL(url);
+    toast(`${slides.length} slides exportados!`, 'success');
+
+  } catch(e) {
+    toast('Erro na exportação: ' + e.message, 'error', 5000);
+    console.error(e);
+  } finally {
+    hideLoading();
+    document.getElementById('btnExport').disabled = false;
+  }
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(str) {
+  return String(str).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// ── Init ─────────────────────────────────────────────────────────────
+initColorPresets();
+renderSlides();
+</script>
+
+</body>
+</html>
